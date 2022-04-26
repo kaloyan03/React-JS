@@ -1,21 +1,24 @@
 import ListTodo from "./ListTodo.js";
+import { v4 as uuidv4} from 'uuid';
 import { useState } from 'react';
+import './ListTodos.css';
 
 function ListTodos() {
     const [todos, setTodos] = useState([
-        {id: 1, text: 'Wash the dishes'},
-        {id: 2, text: 'Tidy your room'},
-        {id: 3, text: 'Study'},
+        {id: uuidv4(), text: 'Wash the dishes', isDone: false},
+        {id: uuidv4(), text: 'Tidy your room', isDone: false},
+        {id: uuidv4(), text: 'Study', isDone: false},
         
     ]);
 
     const onBlurInputTodoHandler = (e) => {
-        const newTodoId = todos.length + 1;
+        const newTodoId = uuidv4();
         const newTodoText = e.target.value;
 
         const newTodo = {
             id: newTodoId,
             text: newTodoText,
+            isDone: false,
         };
 
         setTodos(oldTodos => [
@@ -31,12 +34,34 @@ function ListTodos() {
         setTodos(newTodos);
     };
 
+    const doneTodoItemClickHandler = (e, id) => {
+        let btnElement = e.target;
+        if (btnElement.textContent == 'Done') {
+            btnElement.textContent = 'Not done';
+        } else {
+            btnElement.textContent = 'Done';
+        };
+
+        const selectedTodo = todos.find(x => x.id == id);
+        const selectedTodoIndex = todos.indexOf(selectedTodo);
+        selectedTodo.isDone = !selectedTodo.isDone;
+        
+        let newTodos = todos.filter(t => t.id !== selectedTodo.id);
+        if (!selectedTodo.isDone) {
+            newTodos.unshift(selectedTodo);
+        } else {
+            newTodos.push(selectedTodo);
+        }
+
+        setTodos(newTodos);
+    };
+
     return (
         <>
         <label htmlFor="add-todo-input">Add todo</label>
         <input type='text' onBlur={onBlurInputTodoHandler} id='add-todo-input' />
         <ul>
-            {todos.map(t => <ListTodo onDelete={deleteTodoItemClickHandler} todo={t} id={t.id} key={t.id}></ListTodo>)}
+            {todos.map(t => <ListTodo onDelete={deleteTodoItemClickHandler} onDone={doneTodoItemClickHandler} todo={t} id={t.id} key={t.id}></ListTodo>)}
         </ul>
         </>
     );

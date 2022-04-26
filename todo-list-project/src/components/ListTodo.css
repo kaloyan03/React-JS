@@ -1,0 +1,19 @@
+.btn {
+    padding: 3px 6px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    margin: 0 6px;
+}
+
+.todo-item-not-done-btn {
+    background-color: green;
+}
+
+.todo-item-done-btn {
+    background-color: rgb(160, 0, 0);
+}
+
+.todo-item-delete-btn {
+    background-color: rgb(202, 42, 42);
+}
