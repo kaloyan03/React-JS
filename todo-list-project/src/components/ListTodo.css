@@ -10,6 +10,10 @@
     background-color: green;
 }
 
+.todo-item-done {
+    text-decoration: line-through;
+}
+
 .todo-item-done-btn {
     background-color: rgb(160, 0, 0);
 }

@@ -12,6 +12,10 @@ function ListTodos() {
     ]);
 
     const onBlurInputTodoHandler = (e) => {
+        if (e.target.value == '') {
+            return;
+        }
+
         const newTodoId = uuidv4();
         const newTodoText = e.target.value;
 
@@ -36,14 +40,16 @@ function ListTodos() {
 
     const doneTodoItemClickHandler = (e, id) => {
         let btnElement = e.target;
+        let todoLiElement = e.target.parentElement;
         if (btnElement.textContent == 'Done') {
             btnElement.textContent = 'Not done';
+            todoLiElement.classList.add('todo-item-done');
         } else {
             btnElement.textContent = 'Done';
+            todoLiElement.classList.remove('todo-item-done');
         };
 
         const selectedTodo = todos.find(x => x.id == id);
-        const selectedTodoIndex = todos.indexOf(selectedTodo);
         selectedTodo.isDone = !selectedTodo.isDone;
         
         let newTodos = todos.filter(t => t.id !== selectedTodo.id);
@@ -60,7 +66,7 @@ function ListTodos() {
         <>
         <label htmlFor="add-todo-input">Add todo</label>
         <input type='text' onBlur={onBlurInputTodoHandler} id='add-todo-input' />
-        <ul>
+        <ul className="todo-list">
             {todos.map(t => <ListTodo onDelete={deleteTodoItemClickHandler} onDone={doneTodoItemClickHandler} todo={t} id={t.id} key={t.id}></ListTodo>)}
         </ul>
         </>
