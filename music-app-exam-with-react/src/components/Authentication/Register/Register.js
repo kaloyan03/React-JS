@@ -1,5 +1,5 @@
-import { register } from '../../services/authService.js';
-import { saveUserDataToStorage } from '../../utils.js';
+import { register } from '../../../services/authService.js';
+import { saveUserDataToStorage } from '../../../utils.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,14 +1,14 @@
 import Header from './components/Header';
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from './components/Authentication/Login';
+import Register from './components/Authentication/Register';
 import Welcome from './components/Welcome';
-import ListAlbums from './components/ListAlbums';
-import EditAlbum from './components/EditAlbum'
-import CreateAlbum from './components/CreateAlbum'
-import AlbumDetails from './components/AlbumDetails'
+import ListAlbums from './components/Albums/ListAlbums';
+import EditAlbum from './components/Albums/EditAlbum'
+import CreateAlbum from './components/Albums/CreateAlbum'
+import AlbumDetails from './components/Albums/EditAlbum'
 import Search from './components/Search';
 import Footer from './components/Footer';
-import Logout from './components/Logout';
+import Logout from './components/Authentication/Logout';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';

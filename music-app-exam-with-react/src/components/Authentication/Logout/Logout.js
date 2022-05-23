@@ -1,7 +1,7 @@
-import { clearStorage } from "../../utils";
+import { clearStorage } from "../../../utils";
 
 import { Navigate } from "react-router-dom";
-import { logout } from "../../services/authService";
+import { logout } from "../../../services/authService";
 
 const Logout = ({
     onLogout,
