@@ -5,11 +5,12 @@ import { Navigate } from "react-router-dom";
 const Logout = ({
     onLogout,
 }) => {
+
+    // onLogout();
     clearStorage();
-    onLogout();
     
     return (
-        <Navigate to='/auth/login' />
+        <Navigate to='/auth/login' replace={true} />
     )
 };
 

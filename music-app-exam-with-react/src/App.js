@@ -15,16 +15,16 @@ import { useState, useEffect } from 'react';
 import { getUserDataFromStorage } from './utils';
 
 function App() {
-  const [userInfo, setUserInfo] = useState({isAuthenticated: false, userData: undefined})
+  const [userInfo, setUserInfo] = useState({isAuthenticated: false, userData: ''})
 
   useEffect(() => {
     let userData = getUserDataFromStorage();
 
     setUserInfo({
       isAuthenticated: Boolean(userData),
-      userData: userData,
+      userData,
     })
-  }, [])
+  }, []);
 
 
   const onLogin = (userData) => {
@@ -37,7 +37,7 @@ function App() {
   const onLogout = () => {
     setUserInfo({
       isAuthenticated: false,
-      userData: undefined,
+      userData: null,
     })
   }
 
