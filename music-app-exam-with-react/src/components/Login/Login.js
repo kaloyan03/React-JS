@@ -3,7 +3,9 @@ import { saveUserDataToStorage } from '../../utils.js';
 import { useState } from 'react'; 
 import { useNavigate } from 'react-router-dom'; 
 
-function Login() {
+function Login({
+    onLogin,
+}) {
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
     let navigate = useNavigate();
@@ -35,9 +37,10 @@ function Login() {
             password,
         }
 
+
         login(userData)
         .then(userInfo => {
-            console.log(userInfo['accessToken']);
+            onLogin(userInfo);
             saveUserDataToStorage(userInfo);
             navigate('/');
         })
@@ -51,9 +54,9 @@ function Login() {
             <legend>Login</legend>
 
             <label htmlFor="email" className="vhide">Email</label>
-            <input id="email" onChange={emailOnChange} className="email" name="email" type="text" placeholder="Email" />
+            <input id="email" onChange={emailOnChange} className="email" value={email} name="email" type="text" placeholder="Email" />
             <label htmlFor="password" className="vhide">Password</label>
-            <input id="password" onChange={passwordOnChange} className="password" name="password" type="password" placeholder="Password" />
+            <input id="password" onChange={passwordOnChange} className="password" value={password} name="password" type="password" placeholder="Password" />
             <button type="submit" className="login">Login</button>
 
             <p className="field">

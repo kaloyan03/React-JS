@@ -3,7 +3,9 @@ import { saveUserDataToStorage } from '../../utils.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Register() {
+function Register({
+    onRegister,
+}) {
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
     let [rePassword, setRePassword] = useState('');
@@ -50,7 +52,7 @@ function Register() {
 
         register(userData)
         .then(userInfo => {
-            console.log(userInfo);
+            onRegister(userInfo);
             saveUserDataToStorage(userInfo);
             navigate('/');
         })

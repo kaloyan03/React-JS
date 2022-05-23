@@ -6,6 +6,10 @@ function getUserDataFromStorage() {
     return JSON.parse(localStorage.getItem('userData'))
 }
 
+function clearStorage() {
+    localStorage.clear();
+}
+
 function isAuthenticated() {
     let userData = getUserDataFromStorage();
     return Boolean(userData);
@@ -15,4 +19,5 @@ export {
     saveUserDataToStorage,
     getUserDataFromStorage,
     isAuthenticated,
+    clearStorage,
 }
