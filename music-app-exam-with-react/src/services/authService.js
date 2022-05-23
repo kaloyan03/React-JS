@@ -1,3 +1,5 @@
+import { getUserDataFromStorage } from "../utils";
+
 const baseUrl = 'http://localhost:3030';
 
 
@@ -23,7 +25,20 @@ const login = (data) => {
     .then(body => body.json())
 }
 
+const logout = () => {
+    let userData = getUserDataFromStorage();
+
+    return fetch(`${baseUrl}/users/logout`, {
+        method: 'GET',
+        headers: {
+            'X-Authorization': userData['accessToken'],
+        }
+    })
+    .then(body => body)
+}
+
 export {
     register,
     login,
+    logout,
 }
