@@ -5,7 +5,7 @@ import Welcome from './components/Welcome';
 import ListAlbums from './components/Albums/ListAlbums';
 import EditAlbum from './components/Albums/EditAlbum'
 import CreateAlbum from './components/Albums/CreateAlbum'
-import AlbumDetails from './components/Albums/EditAlbum'
+import AlbumDetails from './components/Albums/AlbumDetails'
 import Search from './components/Search';
 import Footer from './components/Footer';
 import Logout from './components/Authentication/Logout';
@@ -54,6 +54,8 @@ function App() {
 
       <BrowserRouter>
         <Header {...userInfo} />
+        
+        <main>
         <Routes>
           <Route path='/' element={<Welcome />} />
           <Route path='/auth/login' element={<Login onLogin={onLogin} />} />
@@ -61,10 +63,12 @@ function App() {
           <Route path='/auth/register' element={<Register onRegister={onRegister} />} />
           <Route path='/albums' element={<ListAlbums />} />
           <Route path='/albums/create' element={<CreateAlbum />} />
-          <Route path='/albums/:id' element={<AlbumDetails />} />
-          <Route path='/albums/edit/:id' element={<EditAlbum />} />
+          <Route path='/albums/:albumId' element={<AlbumDetails />} />
+          <Route path='/albums/edit/:albumId' element={<EditAlbum />} />
           <Route path='/albums/search' element={<Search />} />
+          <Route />
         </Routes>
+        </main>
       </BrowserRouter>
 
       <Footer />
