@@ -26,10 +26,26 @@ const update = (id, data) => {
     .then(body => body.json())
 }
 
+const create = (data) => {
+    let userData = getUserDataFromStorage();
+
+    return fetch(`${baseUrl}/data/albums`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': userData['accessToken']
+        },
+        body: JSON.stringify(data),
+    })
+    .then(body => body.json())
+}
+
+
 
 
 export {
     getAll,
     getOne,
     update,
+    create,
 }
