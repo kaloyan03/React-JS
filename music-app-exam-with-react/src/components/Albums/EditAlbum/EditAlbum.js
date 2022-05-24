@@ -70,6 +70,7 @@ function EditAlbum() {
     }, [])
 
     const onSubmitFormHandler = (e) => {
+        e.preventDefault();
         let formElement = e.target;
 
         let formData = new FormData(formElement);
