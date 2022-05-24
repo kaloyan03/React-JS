@@ -40,6 +40,17 @@ const create = (data) => {
     .then(body => body.json())
 }
 
+const deleteAlbum = (id) => {
+    let userData = getUserDataFromStorage();
+
+    return fetch(`${baseUrl}/data/albums/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'X-Authorization': userData['accessToken']
+        },
+    })
+    .then(body => body.json())
+}
 
 
 
@@ -48,4 +59,5 @@ export {
     getOne,
     update,
     create,
+    deleteAlbum
 }

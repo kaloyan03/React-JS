@@ -9,6 +9,7 @@ import AlbumDetails from './components/Albums/AlbumDetails'
 import Search from './components/Search';
 import Footer from './components/Footer';
 import Logout from './components/Authentication/Logout';
+import DeleteAlbum from './components/Albums/DeleteAlbum';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -65,6 +66,7 @@ function App() {
           <Route path='/albums/create' element={<CreateAlbum />} />
           <Route path='/albums/:albumId' element={<AlbumDetails />} />
           <Route path='/albums/edit/:albumId' element={<EditAlbum />} />
+          <Route path='/albums/delete/:albumId' element={<DeleteAlbum />} />
           <Route path='/albums/search' element={<Search />} />
           <Route />
         </Routes>
