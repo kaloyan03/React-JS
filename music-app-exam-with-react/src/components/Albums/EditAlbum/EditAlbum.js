@@ -12,60 +12,10 @@ function EditAlbum() {
 
     let [album, setAlbum] = useState({});
 
-    let [albumName, setAlbumName] = useState('');
-    let [albumImgUrl, setAlbumImgUrl] = useState('');
-    let [albumPrice, setAlbumPrice] = useState('');
-    let [albumReleaseDate, setAlbumReleaseDate] = useState('');
-    let [albumArtist, setAlbumArtist] = useState('');
-    let [albumGenre, setAlbumGenre] = useState('');
-    let [albumDescription, setAlbumDescription] = useState('');
-
-    const albumNameOnChangeHandler = (e) => {
-        let albumNameNewValue = e.target.value;
-        setAlbumName(albumNameNewValue);
-    }
-
-    const albumImgUrlOnChangeHandler = (e) => {
-        let albumImgUrlNewValue = e.target.value;
-        setAlbumImgUrl(albumImgUrlNewValue);
-    }
-
-    const albumPriceOnChangeHandler = (e) => {
-        let albumPriceNewValue = e.target.value;
-        setAlbumPrice(albumPriceNewValue);
-    }
-
-    const albumReleaseDateOnChangeHandler = (e) => {
-        let albumReleaseDateNewValue = e.target.value;
-        setAlbumReleaseDate(albumReleaseDateNewValue);
-    }
-
-    const albumArtistOnChangeHandler = (e) => {
-        let albumArtistDateNewValue = e.target.value;
-        setAlbumArtist(albumArtistDateNewValue);
-    }
-
-    const albumGenreOnChangeHandler = (e) => {
-        let albumGenreNewValue = e.target.value;
-        setAlbumGenre(albumGenreNewValue);
-    }
-
-    const albumDescriptionOnChangeHandler = (e) => {
-        let albumDescriptionNewValue = e.target.value;
-        setAlbumDescription(albumDescriptionNewValue);
-    }
-
     useEffect(() => {
         getOne(albumId)
         .then(albumResult => {
             setAlbum(albumResult)
-            setAlbumName(albumResult['name']);
-            setAlbumImgUrl(albumResult['imgUrl']);
-            setAlbumPrice(albumResult['price']);
-            setAlbumReleaseDate(albumResult['releaseDate']);
-            setAlbumArtist(albumResult['artist']);
-            setAlbumGenre(albumResult['genre']);
-            setAlbumDescription(albumResult['description']);
         })
     }, [])
 
@@ -103,20 +53,20 @@ function EditAlbum() {
     
                 <div className="container">
                     <label htmlFor="name" className="vhide">Album name</label>
-                    <input id="name" name="name" className="name" type="text" onChange={albumNameOnChangeHandler} value={albumName} />
+                    <input id="name" name="name" className="name" type="text" defaultValue={album['name']} />
                     <label htmlFor="imgUrl" className="vhide">Image Url</label>
-                    <input id="imgUrl" name="imgUrl" className="imgUrl" type="text" onChange={albumImgUrlOnChangeHandler} value={albumImgUrl} />
+                    <input id="imgUrl" name="imgUrl" className="imgUrl" type="text" defaultValue={album['imgUrl']} />
                     <label htmlFor="price" className="vhide">Price</label>
-                    <input id="price" name="price" className="price" type="text" onChange={albumPriceOnChangeHandler} value={albumPrice} />
+                    <input id="price" name="price" className="price" type="text" defaultValue={album['price']} />
                     <label htmlFor="releaseDate" className="vhide">Release date</label>
-                    <input id="releaseDate" name="releaseDate" className="releaseDate" type="text" onChange={albumReleaseDateOnChangeHandler} value={albumReleaseDate} />
+                    <input id="releaseDate" name="releaseDate" className="releaseDate" type="text" defaultValue={album['releaseDate']} />
                     <label htmlFor="artist" className="vhide">Artist</label>
-                    <input id="artist" name="artist" className="artist" type="text" onChange={albumArtistOnChangeHandler} value={albumArtist} />
+                    <input id="artist" name="artist" className="artist" type="text" defaultValue={album['artist']} />
                     <label htmlFor="genre" className="vhide">Genre</label>
-                    <input id="genre" name="genre" className="genre" type="text" onChange={albumGenreOnChangeHandler} value={albumGenre} />
+                    <input id="genre" name="genre" className="genre" type="text" defaultValue={album['genre']} />
                     <label htmlFor="description" className="vhide">Description</label>
                     <textarea name="description" className="description" rows="10"
-                        cols="10" onChange={albumDescriptionOnChangeHandler} value={albumDescription}></textarea>
+                        cols="10" defaultValue={album['description']}></textarea>
     
                     <button className="edit-album" type="submit">Edit Album</button>
                 </div>

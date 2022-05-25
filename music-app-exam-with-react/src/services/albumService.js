@@ -52,6 +52,12 @@ const deleteAlbum = (id) => {
     .then(body => body.json())
 }
 
+const searchAlbum = (searchingQuery) => {
+    
+    return fetch(`${baseUrl}/data/albums?where=name%20LIKE%20%22${searchingQuery}%22`)
+    .then(response => response.json())
+}
+
 
 
 export {
@@ -59,5 +65,6 @@ export {
     getOne,
     update,
     create,
-    deleteAlbum
+    deleteAlbum,
+    searchAlbum,
 }

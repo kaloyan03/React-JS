@@ -10,18 +10,6 @@ function Login({
     let [password, setPassword] = useState('');
     let navigate = useNavigate();
 
-    const emailOnChange = (e) => {
-        e.preventDefault();
-        let currElementValue = e.target.value;
-        setEmail(currElementValue);
-    }
-
-    const passwordOnChange = (e) => {
-        e.preventDefault();
-        let currElementValue = e.target.value;
-        setPassword(currElementValue);
-    }
-
     const formOnSubmitHandler = (e) => {
         e.preventDefault();
 
@@ -54,9 +42,9 @@ function Login({
             <legend>Login</legend>
 
             <label htmlFor="email" className="vhide">Email</label>
-            <input id="email" onChange={emailOnChange} className="email" value={email} name="email" type="text" placeholder="Email" />
+            <input id="email" className="email" name="email" type="text" placeholder="Email" />
             <label htmlFor="password" className="vhide">Password</label>
-            <input id="password" onChange={passwordOnChange} className="password" value={password} name="password" type="password" placeholder="Password" />
+            <input id="password" className="password" name="password" type="password" placeholder="Password" />
             <button type="submit" className="login">Login</button>
 
             <p className="field">
